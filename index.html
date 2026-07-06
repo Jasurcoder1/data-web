@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jasur — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F7F4;
+    --bg-alt:#EDF0EA;
+    --card:#FFFFFF;
+    --ink:#16241E;
+    --ink-soft:#4B5D54;
+    --ink-faint:#7C8C82;
+    --accent:#1F6F5C;
+    --accent-deep:#164F41;
+    --accent-warm:#D98F3B;
+    --line:#DBE1D6;
+    --radius:14px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,247,244,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px;
+    max-width:1120px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.25rem;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo-mark{
+    width:10px; height:10px; border-radius:2px;
+    background:var(--accent);
+    display:inline-block;
+  }
+  .nav-links{
+    display:flex; gap:36px;
+    font-size:0.92rem;
+    font-weight:500;
+  }
+  .nav-links a{
+    color:var(--ink-soft);
+    position:relative;
+    padding:4px 0;
+  }
+  .nav-links a:hover{color:var(--accent-deep);}
+  .nav-links a:focus-visible, a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:3px;
+  }
+  .btn-cv{
+    background:var(--accent);
+    color:#fff !important;
+    padding:9px 18px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:0.88rem;
+    transition:background .15s ease;
+  }
+  .btn-cv:hover{background:var(--accent-deep);}
+  .mobile-toggle{display:none;}
+
+  @media (max-width:800px){
+    .nav-links{
+      position:fixed; top:64px; left:0; right:0;
+      background:var(--bg); flex-direction:column; gap:0;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-140%); transition:transform .25s ease;
+      padding:8px 32px 20px;
+    }
+    .nav-links.open{transform:translateY(0);}
+    .nav-links a{padding:12px 0; border-bottom:1px solid var(--line);}
+    .mobile-toggle{
+      display:block; background:none; border:none; cursor:pointer;
+      font-size:1.4rem; color:var(--ink);
+    }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:88px 0 64px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--accent-deep);
+    background:rgba(31,111,92,0.08);
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:6px;
+    margin-bottom:22px;
+    letter-spacing:0.02em;
+  }
+  .formula-line{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.95rem;
+    color:var(--ink-faint);
+    margin-bottom:10px;
+  }
+  .formula-line span{color:var(--accent-deep); font-weight:600;}
+  h1.headline{
+    font-size:3.1rem;
+    line-height:1.08;
+    margin-bottom:22px;
+  }
+  h1.headline em{
+    font-style:italic;
+    color:var(--accent);
+  }
+  .hero-sub{
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:480px;
+    margin-bottom:34px;
+  }
+  .hero-cta{
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:#fff;
+    padding:13px 24px;
+    border-radius:9px;
+    font-weight:600;
+    font-size:0.95rem;
+    transition:transform .15s ease, background .15s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary:hover{background:var(--accent-deep); transform:translateY(-1px);}
+  .btn-secondary{
+    border:1.5px solid var(--line);
+    color:var(--ink);
+    padding:12px 24px;
+    border-radius:9px;
+    font-weight:600;
+    font-size:0.95rem;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .btn-secondary:hover{border-color:var(--accent); background:var(--card);}
+
+  /* growth chart signature */
+  .chart-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 24px 20px;
+  }
+  .chart-card-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-bottom:16px;
+  }
+  .chart-path{
+    stroke-dasharray:600;
+    stroke-dashoffset:600;
+    animation:draw 1.8s ease forwards .3s;
+  }
+  .chart-dot{
+    opacity:0;
+    animation:fadeIn .5s ease forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes fadeIn{ to{ opacity:1; } }
+  .milestone-row{
+    display:flex; justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-faint);
+    margin-top:6px;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .chart-path{animation:none; stroke-dashoffset:0;}
+    .chart-dot{animation:none; opacity:1;}
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    h1.headline{font-size:2.3rem;}
+  }
+
+  /* ---------- Section shared ---------- */
+  section{padding:76px 0;}
+  .section-alt{background:var(--bg-alt);}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:40px; flex-wrap:wrap; gap:12px;
+  }
+  .section-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--accent-deep);
+    letter-spacing:0.04em;
+  }
+  h2.section-title{font-size:2rem;}
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px;
+  }
+  .about-grid p{color:var(--ink-soft); margin-bottom:16px;}
+  .about-grid p:last-child{margin-bottom:0;}
+
+  .tag-groups{display:flex; flex-direction:column; gap:20px;}
+  .tag-group-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:var(--ink-faint);
+    text-transform:uppercase; letter-spacing:0.06em;
+    margin-bottom:10px;
+  }
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:7px 13px;
+    border-radius:7px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--ink);
+  }
+
+  @media (max-width:800px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Projects table ---------- */
+  .proj-table{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--card);
+  }
+  .proj-header-row, .proj-row{
+    display:grid;
+    grid-template-columns:2.1fr 1.6fr 2.3fr auto;
+    gap:20px;
+    align-items:center;
+    padding:18px 24px;
+  }
+  .proj-header-row{
+    background:var(--bg-alt);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-faint);
+    border-bottom:1px solid var(--line);
+  }
+  .proj-row{
+    border-bottom:1px solid var(--line);
+    transition:background .12s ease;
+  }
+  .proj-row:last-child{border-bottom:none;}
+  .proj-row:hover{background:rgba(31,111,92,0.05);}
+  .proj-name{font-weight:600; font-size:1rem;}
+  .proj-name .row-idx{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--ink-faint);
+    font-size:0.78rem;
+    margin-right:8px;
+  }
+  .proj-tools{
+    display:flex; flex-wrap:wrap; gap:6px;
+  }
+  .proj-tools span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    background:var(--bg-alt);
+    padding:3px 8px;
+    border-radius:5px;
+    color:var(--ink-soft);
+  }
+  .proj-result{color:var(--ink-soft); font-size:0.92rem;}
+  .proj-link{
+    color:var(--accent-deep);
+    font-weight:600;
+    font-size:0.85rem;
+    white-space:nowrap;
+  }
+  .proj-link:hover{text-decoration:underline;}
+
+  @media (max-width:900px){
+    .proj-header-row{display:none;}
+    .proj-row{
+      grid-template-columns:1fr;
+      gap:8px;
+      align-items:start;
+    }
+    .proj-link{margin-top:4px;}
+  }
+
+  /* ---------- Resume ---------- */
+  .resume-card{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px;
+    flex-wrap:wrap; gap:20px;
+  }
+  .resume-card h3{font-size:1.35rem; margin-bottom:8px;}
+  .resume-card p{color:var(--ink-soft); max-width:440px;}
+
+  /* ---------- Contact / Footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:48px 0 36px;
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:20px;
+  }
+  .footer-links{display:flex; gap:26px;}
+  .footer-links a{
+    color:var(--ink-soft);
+    font-size:0.9rem;
+    font-weight:500;
+  }
+  .footer-links a:hover{color:var(--accent-deep);}
+  .footer-note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--ink-faint);
+  }
+
+  /* scroll reveal */
+  .reveal{
+    opacity:0; transform:translateY(16px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo"><span class="logo-mark"></span>Jasur<span class="mono" style="color:var(--ink-faint); font-size:0.85rem; font-weight:500;">.uz</span></div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">Men haqimda</a>
+      <a href="#projects">Loyihalar</a>
+      <a href="#skills">Ko'nikmalar</a>
+      <a href="#contact">Aloqa</a>
+      <a href="#" class="btn-cv" style="margin-left:6px;">Rezyume</a>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menyuni ochish">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow mono">Toshkent · Data Analyst</div>
+      <div class="formula-line">=BIRLASHTIR(<span>ma'lumot</span>, <span>tahlil</span>, <span>qaror</span>)</div>
+      <h1 class="headline">Raqamlarni <em>tushunarli qarorlarga</em> aylantiraman</h1>
+      <p class="hero-sub">
+        CRM/ERP tizimlar va savdo hisobotlari bilan ishlayman, Power BI va Excel'da real biznes muammolarini
+        tahlil qilib, ulardan amaliy xulosa chiqaraman. Shu bilimlarni YouTube orqali ham o'rgataman.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">Loyihalarni ko'rish →</a>
+        <a href="#" class="btn-secondary">Rezyumeni yuklab olish</a>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-label">Ko'nikmalar rivoji</div>
+      <svg viewBox="0 0 400 160" width="100%" height="auto" style="overflow:visible;">
+        <line x1="0" y1="140" x2="400" y2="140" stroke="#DBE1D6" stroke-width="1"/>
+        <path class="chart-path" d="M0,120 C 60,110 90,95 130,90 C 170,85 190,60 230,55 C 270,50 300,25 400,10"
+              fill="none" stroke="#1F6F5C" stroke-width="3" stroke-linecap="round"/>
+        <circle class="chart-dot" style="animation-delay:0.5s" cx="0" cy="120" r="4.5" fill="#1F6F5C"/>
+        <circle class="chart-dot" style="animation-delay:0.9s" cx="130" cy="90" r="4.5" fill="#1F6F5C"/>
+        <circle class="chart-dot" style="animation-delay:1.3s" cx="230" cy="55" r="4.5" fill="#1F6F5C"/>
+        <circle class="chart-dot" style="animation-delay:1.7s" cx="400" cy="10" r="5.5" fill="#D98F3B"/>
+      </svg>
+      <div class="milestone-row">
+        <span>Excel</span><span>Power BI</span><span>Python</span><span>AI/ML</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-tag mono">01 — Profil</div>
+        <h2 class="section-title">Men haqimda</h2>
+      </div>
+    </div>
+    <div class="about-grid reveal">
+      <div>
+        <p>
+          Men Toshkentda joylashgan data analitikman — kompaniyaning CRM/ERP tizimlaridan olingan
+          ma'lumotlarni tahlil qilib, savdo hisobotlari va boshqaruv dashboardlarini tayyorlayman.
+        </p>
+        <p>
+          Ish jarayonimda ko'proq Excel va Power BI bilan chuqur ishlayman — DAX formulalar, Power Query
+          orqali ma'lumotlarni tozalash, va vizual hisobotlar qurish. Shu bilan birga Python va SQL orqali
+          katta hajmdagi ma'lumotlarni qayta ishlashni ham o'rganmoqdaman.
+        </p>
+        <p>
+          Bilganlarimni o'zimda saqlab qo'ymayman — YouTube kanalimda o'zbek tilida Excel, Power BI va
+          Python bo'yicha darslar yarataman, real hayotiy datasetlar asosida.
+        </p>
+      </div>
+      <div class="tag-groups">
+        <div>
+          <div class="tag-group-label">Analitika vositalari</div>
+          <div class="tags">
+            <span class="tag">Excel</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">DAX</span>
+            <span class="tag">Power Query</span>
+          </div>
+        </div>
+        <div>
+          <div class="tag-group-label">Dasturlash</div>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">SQL / PostgreSQL</span>
+          </div>
+        </div>
+        <div>
+          <div class="tag-group-label">Tahlil usullari</div>
+          <div class="tags">
+            <span class="tag">RFM segmentatsiya</span>
+            <span class="tag">KPI tahlili</span>
+            <span class="tag">A/B test</span>
+            <span class="tag">Prognozlash</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-tag mono">02 — Ishlar</div>
+        <h2 class="section-title">Loyihalar</h2>
+      </div>
+      <p style="color:var(--ink-soft); max-width:360px; font-size:0.94rem;">
+        Har bir loyiha real yoki real hayotga yaqin ma'lumotlar asosida qurilgan.
+      </p>
+    </div>
+
+    <div class="proj-table reveal">
+      <div class="proj-header-row">
+        <span>Loyiha</span><span>Vositalar</span><span>Natija</span><span></span>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-name"><span class="row-idx mono">01</span>Savdo va rentabellik tahlili</div>
+        <div class="proj-tools"><span>Power BI</span><span>DAX</span></div>
+        <div class="proj-result">YTD/MTD hisobotlar, kategoriya bo'yicha marja tahlili va rentabellik dashboardi</div>
+        <a href="#" class="proj-link">Ko'rish →</a>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-name"><span class="row-idx mono">02</span>Mijozlar segmentatsiyasi (RFM)</div>
+        <div class="proj-tools"><span>Excel</span><span>Power Query</span></div>
+        <div class="proj-result">Mijozlarni xarid faolligi bo'yicha guruhlash va sodiqlik strategiyasi taklifi</div>
+        <a href="#" class="proj-link">Ko'rish →</a>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-name"><span class="row-idx mono">03</span>Xodimlar KPI paneli</div>
+        <div class="proj-tools"><span>Power BI</span><span>DAX</span></div>
+        <div class="proj-result">Sotuvchilar samaradorligini taqqoslash va jamoaviy KPI monitoringi</div>
+        <a href="#" class="proj-link">Ko'rish →</a>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-name"><span class="row-idx mono">04</span>A/B test — narx strategiyasi</div>
+        <div class="proj-tools"><span>Python</span><span>Pandas</span></div>
+        <div class="proj-result">Ikki narxlash strategiyasini statistik taqqoslash va tavsiya</div>
+        <a href="#" class="proj-link">Ko'rish →</a>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-name"><span class="row-idx mono">05</span>Savdo hajmini prognozlash</div>
+        <div class="proj-tools"><span>Python</span><span>Time Series</span></div>
+        <div class="proj-result">Tarixiy ma'lumotlar asosida keyingi choraklik savdo bashorati</div>
+        <a href="#" class="proj-link">Ko'rish →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-tag mono">03 — Rezyume</div>
+        <h2 class="section-title">To'liq CV kerakmi?</h2>
+      </div>
+    </div>
+    <div class="resume-card reveal">
+      <div>
+        <h3>Rezyume — PDF format</h3>
+        <p>Ish tajribasi, ta'lim va texnik ko'nikmalarning to'liq ro'yxati bitta faylda.</p>
+      </div>
+      <a href="#" class="btn-primary">Yuklab olish (PDF) ↓</a>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap footer-grid">
+    <div class="footer-note mono">© 2026 Jasur — Data Analyst, Toshkent</div>
+    <div class="footer-links">
+      <a href="mailto:email@example.com">Email</a>
+      <a href="#">YouTube</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Telegram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('mobileToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
