@@ -121,6 +121,8 @@
   /* ---------- Hero ---------- */
   .hero{
     padding:88px 0 64px;
+    background:linear-gradient(180deg, #E7EFE8 0%, #F1F4EE 55%, var(--bg) 100%);
+    border-bottom:1px solid var(--line);
   }
   .hero-grid{
     display:grid;
@@ -223,16 +225,11 @@
     position:relative;
     width:210px; height:210px;
     border-radius:50%;
-    padding:6px;
-    background:linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%);
+    padding:5px;
+    background:var(--card);
+    border:2.5px solid var(--accent);
+    box-shadow:0 8px 24px rgba(22,36,30,0.12);
     margin-bottom:18px;
-  }
-  .portrait-frame::after{
-    content:"";
-    position:absolute; inset:6px;
-    border-radius:50%;
-    box-shadow:inset 0 0 0 3px var(--bg);
-    pointer-events:none;
   }
   .portrait-img{
     width:100%; height:100%;
@@ -240,7 +237,6 @@
     object-fit:cover;
     display:block;
     filter:saturate(1.02);
-    border:3px solid var(--card);
   }
   .portrait-tag{
     font-family:'Fraunces', serif;
@@ -509,10 +505,10 @@
     <div>
       <div class="eyebrow mono">Toshkent · Data Analyst</div>
       <div class="formula-line">=BIRLASHTIR(<span>ma'lumot</span>, <span>tahlil</span>, <span>qaror</span>)</div>
-      <h1 class="headline">Raqamlarni <em>tushunarli qarorlarga</em> aylantiraman</h1>
+      <h1 class="headline">Data Analyst <em>| Business Intelligence</em></h1>
       <p class="hero-sub">
-        CRM/ERP tizimlar va savdo hisobotlari bilan ishlayman, Power BI va Excel'da real biznes muammolarini
-        tahlil qilib, ulardan amaliy xulosa chiqaraman. Shu bilimlarni YouTube orqali ham o'rgataman.
+        Ma'lumotlarni tahlil qilish, dashboard yaratish va biznes hisobotlarini avtomatlashtirish orqali
+        kompaniyalarga tezroq va aniqroq qarorlar qabul qilishga yordam beraman.
       </p>
       <div class="hero-cta">
         <a href="#projects" class="btn-primary">Loyihalarni ko'rish →</a>
@@ -545,17 +541,22 @@
     <div class="about-grid reveal">
       <div>
         <p>
-          Men Toshkentda joylashgan data analitikman — kompaniyaning CRM/ERP tizimlaridan olingan
-          ma'lumotlarni tahlil qilib, savdo hisobotlari va boshqaruv dashboardlarini tayyorlayman.
+          Men Data Analyst sifatida Excel, SQL, Power BI va Python yordamida ma'lumotlarni tahlil qilish,
+          tozalash, vizuallashtirish hamda interaktiv dashboardlar yaratish bilan shug'ullanaman. Savdo,
+          CRM va ERP tizimlaridan olingan ma'lumotlarni biznes uchun foydali insightlarga aylantirib,
+          ma'lumotlarga asoslangan qarorlar qabul qilishga yordam beraman.
         </p>
         <p>
-          Ish jarayonimda ko'proq Excel va Power BI bilan chuqur ishlayman — DAX formulalar, Power Query
-          orqali ma'lumotlarni tozalash, va vizual hisobotlar qurish. Shu bilan birga Python va SQL orqali
-          katta hajmdagi ma'lumotlarni qayta ishlashni ham o'rganmoqdaman.
+          Asosiy tajribam Microsoft Excel va Power BI bilan ishlashga qaratilgan. Pivot Table, Power Query,
+          DAX formulalari va KPI dashboardlari yordamida hisobotlarni avtomatlashtirish hamda katta hajmdagi
+          ma'lumotlarni samarali tahlil qilish bo'yicha amaliy loyihalarni bajarganman. Shuningdek, SQL va
+          Python orqali ma'lumotlarni qayta ishlash va chuqur tahlil qilish ko'nikmalarini muntazam
+          rivojlantirib bormoqdaman.
         </p>
         <p>
-          Bilganlarimni o'zimda saqlab qo'ymayman — YouTube kanalimda o'zbek tilida Excel, Power BI va
-          Python bo'yicha darslar yarataman, real hayotiy datasetlar asosida.
+          O'rgangan bilimlarimni boshqalar bilan ulashishni ham qadrlayman. YouTube platformasida Excel,
+          SQL, Power BI va Data Analytics mavzulari bo'yicha o'zbek tilida amaliy darslar tayyorlab, real
+          biznes misollari va loyihalar asosida tushuntirishga intilaman.
         </p>
       </div>
       <div class="tag-groups">
@@ -672,7 +673,7 @@
           <div class="project-title">Pizza Sales Report</div>
           <div class="proj-tools"><span>Power BI</span><span>DAX</span><span>Interaktiv filtr</span></div>
           <p class="project-desc">Kunlik/oylik savdo trendi, mahsulot kategoriyasi va o'lchami bo'yicha ulush, eng band kunlar va soatlarni aniqlovchi to'liq interaktiv dashboard.</p>
-          <a href="Pizza_sale_1__4_.pbix" download class="proj-download">⬇ .pbix faylni yuklab olish</a>
+          <a href="Pizza_sale_1%20(4).pbix" download class="proj-download">⬇ .pbix faylni yuklab olish</a>
         </div>
       </div>
 
@@ -684,7 +685,7 @@
           <div class="project-title">RFM Mijozlar Tahlili</div>
           <div class="proj-tools"><span>Power BI</span><span>RFM segmentatsiya</span><span>DAX</span></div>
           <p class="project-desc">Recency, Frequency, Monetary ko'rsatkichlari asosida mijozlarni "Chempionlar", "Sodiq mijozlar", "Xavf ostida" kabi segmentlarga ajratuvchi dashboard.</p>
-          <a href="RFM_dashboard1__3_.pbix" download class="proj-download">⬇ .pbix faylni yuklab olish</a>
+          <a href="RFM_dashboard1%20(3).pbix" download class="proj-download">⬇ .pbix faylni yuklab olish</a>
         </div>
       </div>
 
