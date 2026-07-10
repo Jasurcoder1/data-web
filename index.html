@@ -1,120 +1,124 @@
+Tushundim, Jasur! Skrinshotdan koʻrinib turibdiki, HTML kod ichidagi baʼzi maxsus belgilar (`\r`, `\n`) matn ichiga teskari chiziq boʻlib yopishib qolgan. Shu sababli CSS stillari ishlamay, sayt oddiy oq-qora matn holatiga kelib qolibdi.
+
+Bu xatolikni toʻliq tozalab, stillarni joyiga qaytardim. Mana buni toʻgʻridan-toʻgʻri `index.html` faylingizga copy-paste qilsangiz, premium dizayn toʻliq tiklanadi:
+
+```html
 <!DOCTYPE html>
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jasur — Data Analyst</title>
+<title>JAS — Data Analyst</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{\r
-    --bg:#F6F7F4;\r
-    --bg-alt:#EDF0EA;\r
-    --card:#FFFFFF;\r
-    --ink:#16241E;\r
-    --ink-soft:#4B5D54;\r
-    --ink-faint:#7C8C82;\r
-    --accent:#1F6F5C;\r
-    --accent-deep:#164F41;\r
-    --accent-warm:#D98F3B;\r
-    --line:#DBE1D6;\r
-    --radius:14px;\r
-  }\r
-\r
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Work Sans',sans-serif;-webkit-font-smoothing:antialiased}\r
-  body{background:var(--bg);color:var(--ink);line-height:1.6;padding-bottom:120px}\r
-  \r
-  .serif{font-family:'Fraunces',serif;font-weight:400}\r
-  .mono{font-family:'IBM Plex Mono',monospace;font-weight:500}\r
-  \r
-  header{position:sticky;top:0;background:rgba(246,247,244,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:100;padding:18px 0}\r
-  .container{max-width:1120px;margin:0 auto;padding:0 32px}\r
-  \r
-  .nav-wrapper{display:flex;justify-content:between;align-items:center;position:relative}\r
-  .logo{font-size:1.25rem;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:-0.02em}\r
-  .logo span{color:var(--accent)}\r
-  \r
-  .nav-links{display:flex;gap:32px;align-items:center}\r
-  .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:0.95rem;transition:color 0.2s}\r
-  .nav-links a:hover{color:var(--accent)}\r
-  .nav-cta{background:var(--ink);color:#fff!important;padding:8px 16px;border-radius:30px;font-size:0.9rem!important}\r
-  .nav-cta:hover{background:var(--accent-deep)}\r
-  \r
-  .mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}\r
-  .mobile-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:4px 0;transition:0.3s}\r
-  \r
-  .hero{padding:120px 0 80px 0}\r
-  .hero-tag{display:inline-block;background:var(--bg-alt);border:1px solid var(--line);padding:6px 14px;border-radius:30px;font-size:0.85rem;color:var(--accent);margin-bottom:24px;text-transform:uppercase;letter-spacing:0.05em}\r
-  .hero h1{font-size:3.75rem;line-height:1.15;letter-spacing:-0.03em;margin-bottom:32px;max-width:840px}\r
-  .hero h1 em{font-style:italic;color:var(--accent)}\r
-  .hero p{font-size:1.25rem;color:var(--ink-soft);max-width:640px;line-height:1.6;margin-bottom:40px}\r
-  \r
-  .section-title{font-size:2.25rem;letter-spacing:-0.02em;margin-bottom:48px;display:flex;align-items:baseline;gap:16px}\r
-  .section-title span{font-size:0.9rem;color:var(--ink-faint);font-weight:500}\r
-  \r
-  .project-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:32px;margin-bottom:120px}\r
-  .project-card{grid-column:span 6;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s;position:relative}\r
-  .project-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(22,36,30,0.06)}\r
-  .project-card-wide{grid-column:span 12;flex-direction:row}\r
-  \r
-  .project-thumb-link{display:block;width:100%;overflow:hidden;position:relative;background:var(--bg-alt);cursor:zoom-in}\r
-  .project-card-wide .project-thumb-link{width:55%;border-right:1px solid var(--line)}\r
-  .project-thumb-link img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease}\r
-  .project-thumb-link:hover img{transform:scale(1.02)}\r
-  \r
-  .project-body{padding:40px;display:flex;flex-direction:column;flex:1}\r
-  .project-card-wide .project-body{width:45%}\r
-  .project-title{font-size:1.5rem;letter-spacing:-0.01em;margin-bottom:12px;color:var(--ink)}\r
-  .project-desc{color:var(--ink-soft);font-size:1rem;line-height:1.6;margin-bottom:24px}\r
-  \r
-  .proj-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}\r
-  .proj-tag{background:var(--bg);border:1px solid var(--line);padding:4px 10px;border-radius:6px;font-size:0.8rem;color:var(--ink-soft)}\r
-  \r
-  .proj-download{display:inline-flex;align-items:center;color:var(--ink);text-decoration:none;font-weight:600;font-size:0.95rem;gap:6px;border-bottom:1px solid var(--ink);padding-bottom:2px;align-self:flex-start;transition:color 0.2s,border-color 0.2s}\r
-  .proj-download:hover{color:var(--accent);border-color:var(--accent)}\r
-  \r
-  .skills-section{background:var(--bg-alt);border:1px solid var(--line);border-radius:24px;padding:64px;margin-bottom:120px}\r
-  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}\r
-  .skill-col h4{font-size:1.1rem;font-weight:600;margin-bottom:20px;color:var(--ink);text-transform:uppercase;letter-spacing:0.05em}\r
-  .skill-list{list-style:none}\r
-  .skill-list li{margin-bottom:12px;color:var(--ink-soft);font-size:1.05rem;display:flex;align-items:center;gap:10px}\r
-  .skill-list li::before{content:\"\";display:inline-block;width:5px;height:5px;background:var(--accent);border-radius:50%}\r
-  \r
-  .contact-box{text-align:center;padding:80px 0}\r
-  .contact-box h2{font-size:3rem;letter-spacing:-0.02em;margin-bottom:24px}\r
-  .contact-box p{font-size:1.2rem;color:var(--ink-soft);margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto}\r
-  .btn-primary{background:var(--accent);color:#fff;text-decoration:none;padding:16px 36px;border-radius:40px;font-weight:600;display:inline-block;transition:background 0.2s}\r
-  .btn-primary:hover{background:var(--accent-deep)}\r
-  \r
-  footer{border-top:1px solid var(--line);padding:48px 0;color:var(--ink-faint);font-size:0.95rem}\r
-  .footer-inner{display:flex;justify-content:between;align-items:center}\r
-  .footer-links{display:flex;gap:24px}\r
-  .footer-links a{color:var(--ink-faint);text-decoration:none;transition:color 0.2s}\r
-  .footer-links a:hover{color:var(--ink)}\r
-  \r
-  .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(22,36,30,0.92);backdrop-filter:blur(8px);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;cursor:zoom-out}\r
-  .lightbox.open{opacity:1;pointer-events:auto}\r
-  .lightbox img{max-width:90%;max-height:85vh;border-radius:8px;box-shadow:0 24px 60px rgba(0,0,0,0.3);transform:scale(0.95);transition:transform 0.3s cubic-bezier(0.16,1,0.3,1)}\r
-  .lightbox.open img{transform:scale(1)}\r
-  \r
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1)}\r
-  .reveal.in{opacity:1;transform:translateY(0)}\r
-  \r
-  @media(max-width:960px){\r
-    .project-card-wide{flex-direction:column}\r
-    .project-card-wide .project-thumb-link,\r
-    .project-card-wide .project-body{width:100%}\r
-    .project-card-wide .project-thumb-link{border-right:none;border-bottom:1px solid var(--line)}\r
-    .skills-grid{grid-template-columns:1fr}\r
-    .skills-section{padding:40px}\r
-  }\r
-  @media(max-width:768px){\r
-    .hero h1{font-size:2.5rem}\r
-    .project-card{grid-column:span 12}\r
-    .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:var(--bg);border-bottom:1px solid var(--line);padding:24px;flex-direction:column;gap:16px;align-items:flex-start;box-shadow:0 12px 24px rgba(0,0,0,0.04)}\r
-    .nav-links.open{display:flex}\r
-    .mobile-toggle{display:block}\r
-    .footer-inner{flex-direction:column;gap:20px;text-align:center}\r
+  :root {
+    --bg: #F6F7F4;
+    --bg-alt: #EDF0EA;
+    --card: #FFFFFF;
+    --ink: #16241E;
+    --ink-soft: #4B5D54;
+    --ink-faint: #7C8C82;
+    --accent: #1F6F5C;
+    --accent-deep: #164F41;
+    --accent-warm: #D98F3B;
+    --line: #DBE1D6;
+    --radius: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Work Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+  body { background: var(--bg); color: var(--ink); line-height: 1.6; padding-bottom: 120px; }
+  
+  .serif { font-family: 'Fraunces', serif; font-weight: 400; }
+  .mono { font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
+  
+  header { position: sticky; top: 0; background: rgba(246,247,244,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); z-index: 100; padding: 18px 0; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  
+  .nav-wrapper { display: flex; justify-content: space-between; align-items: center; position: relative; }
+  .logo { font-size: 1.25rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+  .logo span { color: var(--accent); }
+  
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--ink); color: #fff !important; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem !important; }
+  .nav-cta:hover { background: var(--accent-deep); }
+  
+  .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .mobile-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 4px 0; transition: 0.3s; }
+  
+  .hero { padding: 120px 0 80px 0; }
+  .hero-tag { display: inline-block; background: var(--bg-alt); border: 1px solid var(--line); padding: 6px 14px; border-radius: 30px; font-size: 0.85rem; color: var(--accent); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .hero h1 { font-size: 3.75rem; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 32px; max-width: 840px; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p { font-size: 1.25rem; color: var(--ink-soft); max-width: 640px; line-height: 1.6; margin-bottom: 40px; }
+  
+  .section-title { font-size: 2.25rem; letter-spacing: -0.02em; margin-bottom: 48px; display: flex; align-items: baseline; gap: 16px; }
+  .section-title span { font-size: 0.9rem; color: var(--ink-faint); font-weight: 500; }
+  
+  .project-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px; margin-bottom: 120px; }
+  .project-card { grid-column: span 6; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s; position: relative; }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(22, 36, 30, 0.06); }
+  .project-card-wide { grid-column: span 12; flex-direction: row; }
+  
+  .project-thumb-link { display: block; width: 100%; overflow: hidden; position: relative; background: var(--bg-alt); cursor: zoom-in; }
+  .project-card-wide .project-thumb-link { width: 55%; border-right: 1px solid var(--line); }
+  .project-thumb-link img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .project-thumb-link:hover img { transform: scale(1.02); }
+  
+  .project-body { padding: 40px; display: flex; flex-direction: column; flex: 1; }
+  .project-card-wide .project-body { width: 45%; }
+  .project-title { font-size: 1.5rem; letter-spacing: -0.01em; margin-bottom: 12px; color: var(--ink); }
+  .project-desc { color: var(--ink-soft); font-size: 1rem; line-height: 1.6; margin-bottom: 24px; }
+  
+  .proj-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+  .proj-tag { background: var(--bg); border: 1px solid var(--line); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; color: var(--ink-soft); }
+  
+  .proj-download { display: inline-flex; align-items: center; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 0.95rem; gap: 6px; border-bottom: 1px solid var(--ink); padding-bottom: 2px; align-self: flex-start; transition: color 0.2s, border-color 0.2s; }
+  .proj-download:hover { color: var(--accent); border-color: var(--accent); }
+  
+  .skills-section { background: var(--bg-alt); border: 1px solid var(--line); border-radius: 24px; padding: 64px; margin-bottom: 120px; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+  .skill-col h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em; }
+  .skill-list { list-style: none; }
+  .skill-list li { margin-bottom: 12px; color: var(--ink-soft); font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
+  .skill-list li::before { content: ""; display: inline-block; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
+  
+  .contact-box { text-align: center; padding: 80px 0; }
+  .contact-box h2 { font-size: 3rem; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .contact-box p { font-size: 1.2rem; color: var(--ink-soft); margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .btn-primary { background: var(--accent); color: #fff; text-decoration: none; padding: 16px 36px; border-radius: 40px; font-weight: 600; display: inline-block; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--accent-deep); }
+  
+  footer { border-top: 1px solid var(--line); padding: 48px 0; color: var(--ink-faint); font-size: 0.95rem; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: var(--ink-faint); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+  
+  .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(22, 36, 30, 0.92); backdrop-filter: blur(8px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; cursor: zoom-out; }
+  .lightbox.open { opacity: 1; pointer-events: auto; }
+  .lightbox img { max-width: 90%; max-height: 85vh; border-radius: 8px; box-shadow: 0 24px 60px rgba(0,0,0,0.3); transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+  .lightbox.open img { transform: scale(1); }
+  
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  
+  @media(max-width: 960px) {
+    .project-card-wide { flex-direction: column; }
+    .project-card-wide .project-thumb-link, .project-card-wide .project-body { width: 100%; }
+    .project-card-wide .project-thumb-link { border-right: none; border-bottom: 1px solid var(--line); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .skills-section { padding: 40px; }
+  }
+  @media(max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .project-card { grid-column: span 12; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); border-bottom: 1px solid var(--line); padding: 24px; flex-direction: column; gap: 16px; align-items: flex-start; box-shadow: 0 12px 24px rgba(0,0,0,0.04); }
+    .nav-links.open { display: flex; }
+    .mobile-toggle { display: block; }
+    .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
   }
 </style>
 </head>
@@ -122,7 +126,7 @@
 
 <header>
   <div class="container nav-wrapper">
-    <a href="#" class="logo serif">Jasur<span>.</span></a>
+    <a href="#" class="logo serif">JAS<span>.</span></a>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Menyu">
       <span></span><span></span><span></span>
     </button>
@@ -146,6 +150,7 @@
     
     <div class="project-grid">
       
+      <!-- LOYIHA 1: PIZZA SALES -->
       <div class="project-card project-card-wide">
         <a href="#" class="project-thumb-link" aria-label="Pizza loyihasini kattalashtirish">
           <img src="images/pizza-dashboard.png" alt="Pizza Sales Dashboard">
@@ -153,7 +158,7 @@
         <div class="project-body">
           <div class="mono" style="color:var(--accent); font-size:0.8rem; text-transform:uppercase; margin-bottom:8px">Power BI / SQL</div>
           <h3 class="project-title serif">Pizza Savdosi Dashboardi</h3>
-          <p class="project-desc">Katta hajmdagi savdo ma'lumotlarini SQL yordamida qayta ishlab, Power BI'da tahliliy dashboard yaratildi. Daromad, eng ko'p sotilgan mahsulotlar va asosiy KPI ko'rsatkichlari aks ettirilgan.</p>
+          <p class="project-desc">Katta hajmdagi savdo ma'lumotlarini SQL yordamida qayta ishlab, Power BI'da tahliliy dashboard yaratildi. Daromad, eng ko'p sotilgan mahsulotlar va asosij KPI ko'rsatkichlari aks ettirilgan.</p>
           <div class="proj-tags mono">
             <span class="proj-tag">Data Analysis</span>
             <span class="proj-tag">KPIs</span>
@@ -168,6 +173,7 @@
         </div>
       </div>
 
+      <!-- LOYIHA 2: RFM SEGMENTATION -->
       <div class="project-card">
         <a href="#" class="project-thumb-link" aria-label="RFM loyihasini kattalashtirish">
           <img src="images/rfm-dashboard.png" alt="RFM Customer Segmentation">
@@ -189,13 +195,14 @@
         </div>
       </div>
 
+      <!-- LOYIHA 3: PYTHON + CSV AUTOMATION -->
       <div class="project-card">
         <a href="#" class="project-thumb-link" aria-label="Python loyihasini kattalashtirish">
           <img src="images/python-dashboard.png" alt="Python Interactive Dashboard">
         </a>
         <div class="project-body">
           <div class="mono" style="color:var(--accent); font-size:0.8rem; text-transform:uppercase; margin-bottom:8px">Python / Scripting</div>
-          <h3 class="project-title serif">Python Dashboard & Data Automation</h3>
+          <h3 class="project-title serif">Python Dashboard & CSV Automation</h3>
           <p class="project-desc">Tahliliy ma'lumotlarni qayta ishlash va CSV fayllar bilan integratsiya qilingan interaktiv vizuallashtirish tizimi. Jarayonlarni avtomatlashtirish va samarali boshqarish uchun xizmat qiladi.</p>
           <div class="proj-tags mono">
             <span class="proj-tag">Python</span>
@@ -255,7 +262,7 @@
 
 <footer>
   <div class="container footer-inner">
-    <p class="mono">&copy; 2026 Jasur. Barcha huquqlar himoyalangan.</p>
+    <p class="mono">&copy; 2026 JAS. Barcha huquqlar himoyalangan.</p>
     <div class="footer-links mono">
       <a href="mailto:jasurabduxakimov3@gmail.com">Email</a>
       <a href="#">YouTube</a>
@@ -280,7 +287,6 @@
   }, {threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Loyiha skrinshotlarini kattalashtirish (lightbox)
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = lightbox.querySelector('img');
   document.querySelectorAll('.project-thumb-link').forEach(link => {
@@ -299,3 +305,5 @@
 
 </body>
 </html>
+
+```
